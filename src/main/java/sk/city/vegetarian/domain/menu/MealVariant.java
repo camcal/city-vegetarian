@@ -1,9 +1,6 @@
 package sk.city.vegetarian.domain.menu;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import org.springframework.util.Assert;
 

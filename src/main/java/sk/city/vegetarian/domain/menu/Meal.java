@@ -1,14 +1,9 @@
 package sk.city.vegetarian.domain.menu;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 import org.springframework.util.Assert;
 
@@ -23,12 +18,14 @@ public class Meal extends AbstractEntity{
 	private String base;
 
     private Float price;
+    
+    private Short mealOrder;
 
     /**
      *  Alternative side dishes
      */
     @OneToMany
-    private Set<MealVariant> variants = new HashSet<MealVariant>();
+    private List<MealVariant> variants;
     
     public Meal(String base, Float price){
     	
@@ -58,14 +55,23 @@ public class Meal extends AbstractEntity{
 	public void setPrice(Float price) {
 		this.price = price;
 	}
-
-	public Set<MealVariant> getVariants() {
-		return Collections.unmodifiableSet(variants);
+	
+	public Short getMealOrder() {
+		return mealOrder;
 	}
 
-	public void setVariants(Set<MealVariant> variants) {
+	public void setMealOrder(Short mealOrder) {
+		this.mealOrder = mealOrder;
+	}
+
+	public List<MealVariant> getVariants() {
+		return variants;
+	}
+
+	public void setVariants(List<MealVariant> variants) {
 		this.variants = variants;
 	}
-    
+
+	
     
 }
