@@ -28,7 +28,7 @@ public class RestExporterWebInitializer implements WebApplicationInitializer {
 		DispatcherServlet dispatcherServlet = new DispatcherServlet(webCtx);
 		ServletRegistration.Dynamic reg = servletContext.addServlet("rest-exporter", dispatcherServlet);
 		reg.setLoadOnStartup(1);
-		reg.addMapping("/*");
+		reg.addMapping("/rest/*");
 
 	}
 
