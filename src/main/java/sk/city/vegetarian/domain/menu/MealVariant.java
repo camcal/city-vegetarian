@@ -13,11 +13,13 @@ public class MealVariant extends AbstractEntity {
 	
 	private Integer variantOrder;
 	
-	public MealVariant(String variant) {
+	public MealVariant(Long id, String variant, Integer variantOrder) {
 		
 		Assert.hasText(variant);
 		
+		this.setId(id);
 		this.variant = variant;
+		this.variantOrder = variantOrder;
 	}
 	
 	public MealVariant() {

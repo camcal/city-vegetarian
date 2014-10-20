@@ -4,12 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>sk.city.vegetarian</groupId>
-  <artifactId>cv-rest</artifactId>
+  <artifactId>city-vegetarian</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>City Vegetarian</name>
 
    <properties>
-		<spring.version>3.2.2.RELEASE</spring.version>
+		<spring.version>3.2.6.RELEASE</spring.version>
+		
 		<slf4j.version>1.7.2</slf4j.version>
 		<jackson.version>2.1.4</jackson.version>
 		<logback.version>1.0.11</logback.version>
@@ -242,6 +243,12 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>1.0.0.GA</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.hibernate</groupId>
+		  <artifactId>hibernate-validator-annotation-processor</artifactId>
+		  <version>4.1.0.Final</version>
 		</dependency>
 
 	</dependencies>

@@ -17,7 +17,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = "sk.city.vegetarian")
+@ComponentScan(basePackages = {"sk.city.vegetarian"})
 @EnableJpaRepositories(basePackages = "sk.city.vegetarian.domain")
 @EnableTransactionManagement
 public class LocalApplicationConfig {

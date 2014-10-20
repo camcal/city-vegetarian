@@ -20,6 +20,8 @@ public class Meal extends AbstractEntity{
     private Float price;
     
     private Short mealOrder;
+    
+    private Integer weight;
 
     /**
      *  Alternative side dishes
@@ -27,13 +29,17 @@ public class Meal extends AbstractEntity{
     @OneToMany
     private List<MealVariant> variants;
     
-    public Meal(String base, Float price){
+    public Meal(Long id, String base, Float price, Integer weight){
     	
+    	Assert.notNull(id);
     	Assert.hasText(base);
     	Assert.notNull(price);
+    	Assert.notNull(weight);
     	
+    	this.setId(id);
     	this.base = base;
     	this.price = price;
+    	this.weight = weight;
     }
     
     public Meal() {
@@ -70,6 +76,14 @@ public class Meal extends AbstractEntity{
 
 	public void setVariants(List<MealVariant> variants) {
 		this.variants = variants;
+	}
+
+	public Integer getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Integer weight) {
+		this.weight = weight;
 	}
 
 	

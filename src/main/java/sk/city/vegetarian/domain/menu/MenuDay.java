@@ -3,11 +3,15 @@ package sk.city.vegetarian.domain.menu;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import sk.city.vegetarian.domain.AbstractEntity;
 
+/**
+ * 	Menu for day specified with menuDate
+ */
 @Entity
 public class MenuDay extends AbstractEntity {
 	
