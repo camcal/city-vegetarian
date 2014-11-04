@@ -34,13 +34,15 @@ public class MenuDayController {
 	    LOG.debug("Current date: {}", calendar.getTime()); 
 		
 		MenuDay menuDay = menuDayRepository.findByMenuDate(calendar.getTime());
-		List<Meal> meals = menuDayRepository.getMenuDayMeals(menuDay.getId());
-		
-		for (Meal meal : meals) {
-			meal.setVariants(mealVariantRepository.getMealVariants(meal.getId()));
+		if(menuDay!= null){
+			List<Meal> meals = menuDayRepository.getMenuDayMeals(menuDay.getId());
+			
+			for (Meal meal : meals) {
+				meal.setVariants(mealVariantRepository.getMealVariants(meal.getId()));
+			}
+			menuDay.setMeals(meals);
 		}
 		
-		menuDay.setMeals(meals);
 		LOG.debug("getCurrentDayMenu(): " + menuDay);
 		
 		return menuDay;

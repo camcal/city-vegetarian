@@ -3,7 +3,6 @@ package sk.city.vegetarian.domain.menu;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 

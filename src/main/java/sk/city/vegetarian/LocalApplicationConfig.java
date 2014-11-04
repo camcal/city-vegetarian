@@ -40,9 +40,15 @@ public class LocalApplicationConfig {
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
+//		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test");
+//		dataSource.setUsername("root");
+//		dataSource.setPassword("root");
+		
+		
+		dataSource.setUrl("jdbc:postgresql://" + System.getenv("OPENSHIFT_MYSQL_DB_HOST") + ":"
+				+ System.getenv("OPENSHIFT_MYSQL_DB_PORT") + "/"+System.getenv("OPENSHIFT_APP_NAME"));
+		dataSource.setUsername(System.getenv("OPENSHIFT_MYSQL_DB_USERNAME"));
+		dataSource.setPassword(System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD"));		
 		
 		dataSource.setTestOnBorrow(true);
 		dataSource.setTestOnReturn(true);

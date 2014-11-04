@@ -1,35 +1,30 @@
 (function(){
 	var app = angular.module("editMenu",[]);
 	
-	app.controller("MealController",function(){
-		this.meal = 
-             {
-            	 base:"Chleba s maslom",
-            	 price:0.5,
-            	 variants: [
-            	     {
-            	    	 variant:"a medom",
-            	         variantOrder:1
-            	     },
-            	     {
-            	    	 variant:"lekvarom",
-            	         variantOrder:2
-            	     }
-            	 ]
-             }
-        ;
-		this.addVariant = function(){
-			console.log(this.meal.variants.length+1);
-			this.meal.variants.push({variant:"",variantOrder:this.meal.variants.length+1});
+	app.controller("MealController",["$http", function($http){
+		
+		var editMenu = this;
+		editMenu.menuDay = ""; 
+		$http.get("http://localhost:8080/cv-rest/rest/currentMenuDay").success(function(menuDayJSON){
+			editMenu.menuDay = menuDayJSON; 
+		});
+
+		this.addVariant = function(index){
+			console.log(index);
+			lastVariantOrder = this.menuDay.meals[index].variants.length;
+			console.log(lastVariantOrder);
+			this.menuDay.meals[index].variants.push({variant:"",variantOrder:lastVariantOrder + 1});
 		};
 		
-		this.removeVariant = function(index){
-			this.meal.variants.splice(index, 1);
+		this.removeVariant = function(parentIndex, index){
+			console.log("parentIndex: " + parentIndex + " index: " + index);
+			console.log(this.menuDay.meals[parentIndex]);
+			this.menuDay.meals[parentIndex].variants.splice(index, 1);
 		};
 		
 		this.logMeal = function(){
-			console.log(this.meal);
+			console.log(this.menuDay);
 		};
 
-	});
+	}]);
 })();

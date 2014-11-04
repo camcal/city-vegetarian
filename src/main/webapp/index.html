@@ -7,17 +7,30 @@
 		<h3>city vegetarian</h3>
 		<div>
 			<form name="mealForm" ng-controller="MealController as mealCtrl">
-				<label>base</label>
-				<input type="text" ng-model="mealCtrl.meal.base"/>
-				<label>price</label>
-				<input type="number" step="0.1" ng-model="mealCtrl.meal.price"/>
-				<div ng-repeat="variant in mealCtrl.meal.variants">
-					<label>variant</label>
-					<input type="text" ng-model="variant.variant"/>
-					<a href ng-click="mealCtrl.removeVariant($index)">X</a>
+				<div ng-repeat="meal in mealCtrl.menuDay.meals">
+					<ul>
+						<li>
+							<label>weight</label>
+							<input type="text" ng-model="meal.weight"/>
+							<label>base</label>
+							<input type="text" ng-model="meal.base"/>
+							<label>price</label>
+							<input type="number" step="0.1" ng-model="meal.price"/>
+							<ul>
+								<div ng-repeat="variant in meal.variants">
+								<li>
+									<label>variant</label>
+									<input type="text" ng-model="variant.variant"/>
+									<a href ng-click="mealCtrl.removeVariant($parent.$index,$index)">X</a>
+								</li>
+								</div>
+								<li>
+									<a href ng-click="mealCtrl.addVariant($index)">add variant</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
-				<a href ng-click="mealCtrl.addVariant()">add variant</a>
-				<a href ng-click="mealCtrl.logMeal($last)">print meal</a>
 			</form>
 		</div>
 		<script type="text/javascript" src="js/angular.min.js"></script>
